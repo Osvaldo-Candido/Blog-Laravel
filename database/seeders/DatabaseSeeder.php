@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
-        // ]);
+        // ]);-
+
+        \App\Models\Post::factory(5)->create();
+        \App\Models\Post::factory(5)->active()->create();
+
+     // $this->call(PostsTableSeeder::class);
     }
 }
