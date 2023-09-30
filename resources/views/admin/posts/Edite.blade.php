@@ -9,7 +9,7 @@
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-2">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{route('admin.post.update',['post'=>$posts->id])}}" method="post">
+                    <form action="{{route('admin.post.update',['post'=>$posts->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="w-full mb-6">
@@ -32,6 +32,17 @@
                             <input type="radio" name="is_active" value="0" @if (!$posts->is_active)
                             checked
                             @endif>Inactivo
+                        </div>
+                         <div class="w-full mb-6 bg-white p-2 flex">
+                            <div class="w-1/2">
+                                @if ($posts->thumb)
+                                    <img src="{{asset('storage/'.$posts->thumb)}}" alt="Capa da postagem {{$posts->title}}">
+                                @endif
+                            </div>
+                            <div class="w-1/2 flex items-center justify-center">
+                                <label for="" class="block mb-2">Capa postagem</label>
+                                <input type="file" name="thumb" id="">
+                            </div>
                         </div>
                         <div class="w-full mb-6">
                                 <button class="px-4 py-2 shadow rounded
